@@ -28,9 +28,10 @@ class Dashboard extends React.Component {
   }
 
   submit = (menu) => {
-    const { menus } = this.state
+    let { menus } = this.state
     axios.post('/api/menus', {menu})
     .then( res => this.setState({ menus: [res.data, ...menus ], showForm: false }) )
+    .catch( e => console.log(e.response.dataerrors) )
   }
 
   toggleForm = () => {

@@ -15,7 +15,7 @@ class Api::MenusController < ApplicationController
     if menu.save
       render json: menu
     else
-      render_error(menu)
+      render json: { errors: product.errors.full_messages.join(',')}, status: unprocessable_entity
     end
   end
 
